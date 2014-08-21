@@ -3,59 +3,52 @@ var cheerio = require('cheerio');
 var async = require('async');
 
 module.exports = {
-    updateListMovies: function () {
+    updateListMovies: function (funcCb) {
         url = 'http://www.shoppingpatioguarulhos.com.br/cinema_lazer.php/';
         request(url, function(error, response, html){
             if(!error){
                 var $ = cheerio.load(html);
+                var movieList = [];
                 var movies = [];
                 var funcsToExecute = [];
 
 
-                var getListOfMovies = function (asyncCb) {
                     $('.slides_container div a').each(function(index, elem){
-                        movies.push({Titulo: $(this).find('img').attr('title'), Url: $(this).attr('href')});
+                        movieList.push({Titulo: $(this).find('img').attr('title'), Url: $(this).attr('href')});
                     });
-                    asyncCb();
-                };
-
-                funcsToExecute['getListOfMovies'] = getListOfMovies;
 
 
-                var getEachMovie = function (asyncCb) {
-                    movies.forEach(function(movie, index){
-                        console.log('Analisando filme: ' + movie.Titulo);
+                    movieList.forEach(function(movie, index){
                         request(url + movie.Url, function(error, response, html){
                             if(!error){
                                 var $ = cheerio.load(html);
-                                movies[index].DataInicial = $('.verde13').eq(0).find('fo').text().substring(0, 10);
-                                movies[index].DataFinal = $('.verde13').eq(1).find('fo').text().substring(0, 10);
-                                movies[index].Genero = $('.verde13').eq(2).find('fo').text().substring(0, $('.verde13').eq(2).find('fo').text().indexOf("          "));
-                                movies[index].Censura = $('.verde13').eq(3).find('fo').text();
-                                movies[index].Elenco = $('.verde13').eq(4).find('fo').text();
-                                movies[index].Diretor = $('.verde13').eq(5).find('fo').text();
-                                movies[index].Horarios = [
-                                    {"Segunda": $('.lista.c11').first().find('.horarios').eq(0).text()},
-                                    {"Terca": $('.lista.c11').first().find('.horarios').eq(1).text()},
-                                    {"Quarta": $('.lista.c11').first().find('.horarios').eq(2).text()},
-                                    {"Quinta": $('.lista.c11').first().find('.horarios').eq(3).text()},
-                                    {"Sexta": $('.lista.c11').first().find('.horarios').eq(4).text()},
-                                    {"Sabado": $('.lista.c11').first().find('.horarios').eq(5).text()},
-                                    {"Domingo": $('.lista.c11').first().find('.horarios').eq(6).text()}
+                                var newMoview = {};
+
+                                newMoview.Titulo = movie.Titulo;
+                                newMoview.Url = movie.Url;
+                                newMoview.DataInicial = $('.verde13').eq(0).find('fo').text().substring(0, 10);
+                                newMoview.DataFinal = $('.verde13').eq(1).find('fo').text().substring(0, 10);
+                                newMoview.Genero = $('.verde13').eq(2).find('fo').text().substring(0, $('.verde13').eq(2).find('fo').text().indexOf("          "));
+                                newMoview.Censura = $('.verde13').eq(3).find('fo').text();
+                                newMoview.Elenco = $('.verde13').eq(4).find('fo').text();
+                                newMoview.Diretor = $('.verde13').eq(5).find('fo').text();
+                                newMoview.Horarios = [
+                                    {"Segunda": $('.lista.c11').first().find('.horarios').eq(0).text(),
+                                    "Terca": $('.lista.c11').first().find('.horarios').eq(1).text(),
+                                    "Quarta": $('.lista.c11').first().find('.horarios').eq(2).text(),
+                                    "Quinta": $('.lista.c11').first().find('.horarios').eq(3).text(),
+                                    "Sexta": $('.lista.c11').first().find('.horarios').eq(4).text(),
+                                    "Sabado": $('.lista.c11').first().find('.horarios').eq(5).text(),
+                                    "Domingo": $('.lista.c11').first().find('.horarios').eq(6).text()}
                                 ];
-                            }
-                            if ( movies.length === index + 1){
-                                asyncCb();
+                                movies.push(newMoview);
+
+                                if ( movieList.length === movies.length){
+                                    funcCb(movies);
+                                }
                             }
                         });
-                    });
-                };
-                funcsToExecute['getEachMovie'] = getEachMovie;
-
-                async.auto(funcsToExecute, function (err, data) {
-                    console.log(movies);
-                })
-
+                });
             }
         });
     },
