@@ -23,7 +23,7 @@ module.exports = {
                             if(!error){
                                 var $ = cheerio.load(html);
                                 var newMoview = {};
-
+                                //TODO - salvar descricao
                                 newMoview.Titulo = movie.Titulo;
                                 newMoview.Url = movie.Url;
                                 newMoview.DataInicial = $('.verde13').eq(0).find('fo').text().substring(0, 10);
