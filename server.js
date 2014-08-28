@@ -4,7 +4,8 @@ var swig = require('swig');
 var mongoose = require('mongoose');
 var cheerio = require('cheerio');
 var request = require('request');
-var routes = require('./routes')
+var routes = require('./routes');
+var port = Number(process.env.PORT || 3000);
 
 var pub = __dirname + '/src',
     view = __dirname + '/views';
@@ -25,6 +26,6 @@ mongoose.connect('mongodb://admin:64633606@ds049858.mongolab.com:49858/xmovie', 
 
     routes(app);
 
-    app.listen(3000);
-    console.log('The Magic Happens on port 3000');
+    app.listen(port);
+    console.log('The Magic Happens on port ' + port);
 });
