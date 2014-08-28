@@ -12,13 +12,13 @@ module.exports = exports = function(app, db){
         });
     });
 
-    app.post('/update', function(req, res){
+    app.get('/update', function(req, res){
         var cb = function (movies) {
             LastUpdate.findOne(function (err, data) {
                 if(err) throw err;
 
                 //TODO - Melhorar o esquema de atualização
-                if(!data && data.DayOfWeek === 5){
+                if(!data || data.DayOfWeek === 5){
                     var date = new Date;
                     var today = {
                         'LastDate': date,
@@ -30,7 +30,7 @@ module.exports = exports = function(app, db){
                         });
                     })
                 }
-
+                res.send('Check your console!')
 
             });
         };
