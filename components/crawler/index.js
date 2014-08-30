@@ -26,21 +26,23 @@ module.exports = {
                                 //TODO - salvar descricao
                                 newMoview.Titulo = movie.Titulo;
                                 newMoview.Url = movie.Url;
+                                newMoview.Descricao = $('.c13').text();
+                                newMoview.Img = 'http://www.shoppingpatioguarulhos.com.br/' + $('.img').find('img').attr('src')
                                 newMoview.DataInicial = $('.verde13').eq(0).find('fo').text().substring(0, 10);
                                 newMoview.DataFinal = $('.verde13').eq(1).find('fo').text().substring(0, 10);
                                 newMoview.Genero = $('.verde13').eq(2).find('fo').text().substring(0, $('.verde13').eq(2).find('fo').text().indexOf("          "));
                                 newMoview.Censura = $('.verde13').eq(3).find('fo').text();
                                 newMoview.Elenco = $('.verde13').eq(4).find('fo').text();
                                 newMoview.Diretor = $('.verde13').eq(5).find('fo').text();
-                                newMoview.Horarios = [
+                                newMoview.Horarios = 
                                     {"Segunda": $('.lista.c11').first().find('.horarios').eq(0).text(),
                                     "Terca": $('.lista.c11').first().find('.horarios').eq(1).text(),
                                     "Quarta": $('.lista.c11').first().find('.horarios').eq(2).text(),
                                     "Quinta": $('.lista.c11').first().find('.horarios').eq(3).text(),
                                     "Sexta": $('.lista.c11').first().find('.horarios').eq(4).text(),
                                     "Sabado": $('.lista.c11').first().find('.horarios').eq(5).text(),
-                                    "Domingo": $('.lista.c11').first().find('.horarios').eq(6).text()}
-                                ];
+                                    "Domingo": $('.lista.c11').first().find('.horarios').eq(6).text()
+                                };
                                 movies.push(newMoview);
 
                                 if ( movieList.length === movies.length){
