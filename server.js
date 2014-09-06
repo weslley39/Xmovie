@@ -6,12 +6,16 @@ var cheerio = require('cheerio');
 var request = require('request');
 var routes = require('./routes');
 var port = Number(process.env.PORT || 3000);
+var mongoConnection = port === 3000 ?
+    'mongodb://localhost:27017/xmovie' :
+    'mongodb://admin:64633606@ds049858.mongolab.com:49858/xmovie';
+
 
 var pub = __dirname + '/src',
     view = __dirname + '/views';
 
 
-mongoose.connect('mongodb://admin:64633606@ds049858.mongolab.com:49858/xmovie', function(err){
+mongoose.connect(mongoConnection, function(err){
     if (err) throw err;
 
     var app = express();

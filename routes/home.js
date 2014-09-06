@@ -18,11 +18,15 @@ module.exports = exports = function(app, db){
                 movies.forEach(function(movie, index){
                     var atualDay = movie['Horarios'][mapDay[day]];
                     var atualHours = atualDay.split(" - ");
-
+                    console.log(atualHours)
                     atualHours.forEach(function(data, index){
-                        console.log(data.substring(0, 2));
-                        // if (data.substring(0, 2) === )
+                        if (parseInt(data.substring(0, 2)) < hour) {
+                            atualHours.splice(index, 1);
+                        };
                     });
+                    if (atualHours.length ===1){
+                        console.log(movies[index]['Horarios'][mapDay[day]]);
+                    }
                 });
 
             return res.render('index2', {movies: movies});
