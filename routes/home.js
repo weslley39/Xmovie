@@ -18,17 +18,17 @@ module.exports = exports = function(app, db){
                 movies.forEach(function(movie, index){
                     var atualDay = movie['Horarios'][mapDay[day]];
                     var atualHours = atualDay.split(" - ");
-                    console.log(atualHours)
-                    atualHours.forEach(function(data, index){
-                        if (parseInt(data.substring(0, 2)) < hour) {
-                            atualHours.splice(index, 1);
-                        };
+                    var availableHours = [];
+                    atualHours.forEach(function(data, index2){
+                        if (parseInt(data.substring(0, 2)) >= hour) {
+                             availableHours.push(' ' + data);
+                        }
                     });
-                    if (atualHours.length ===1){
-                        console.log(movies[index]['Horarios'][mapDay[day]]);
-                    }
+                    movies[index]['Horarios'] = '';
+                    movies[index]['Horarios']['hour']= availableHours.length === 0 ?
+                    "Sessão Encerrada" :
+                    availableHours;
                 });
-
             return res.render('index2', {movies: movies});
         });
     });
