@@ -17,6 +17,7 @@ module.exports = exports = function(app, db){
 
                 movies.forEach(function(movie, index){
                     var atualDay = movie['Horarios'][mapDay[day]];
+                    
                     var atualHours = atualDay.split(" - ");
                     console.log(atualHours)
                     atualHours.forEach(function(data, index){

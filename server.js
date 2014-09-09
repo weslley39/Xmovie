@@ -12,6 +12,7 @@ var mongoConnection = port === 3000 ?
 
 
 var pub = __dirname + '/src',
+    appDir = __dirname + '/app',
     view = __dirname + '/views';
 
 
@@ -20,6 +21,7 @@ mongoose.connect(mongoConnection, function(err){
 
     var app = express();
     app.use(express.static(pub));
+    app.use(express.static(appDir));
 
     app.engine('html', cons.swig);
     app.set('view engine', 'html');

@@ -1,76 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
-    <title>Xmovie</title>
+  <title>Xmovie</title>
 
-    <!-- Sets initial viewport load and disables zooming  -->
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!-- Sets initial viewport load and disables zooming  -->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="/css/ionic.min.css">
+  <link rel="stylesheet" href="/css/ionic.min.css">
 </head>
 <body>
 
-<ion-content>
-      <div class="list">
-        {% for movie in movies %}
-        <a href="#"
-           class="item item-thumbnail-left">
 
-          <img src="{{movie.Img}}">
-          <h2>{{movie.Titulo}}</h2>
-          <p>{{movie.Horarios.Segunda}}</p>
-        </a>
-        {% endfor %}
-        </div>
+<ion-content>
+<div class="list">
+  {% for movie in movies %}
+  <a href="#"
+  class="item item-thumbnail-left">
+
+  <img src="{{movie.Img}}">
+  <h2>{{movie.Titulo}}</h2>
+  <p>{{movie.Horarios.Segunda}}</p>
+</a>
+{% endfor %}
+</div>
 </ion-content>
 
-
-
-
-<!-- 
-<div class="content">
-<ul class="table-view">
-    {% for movie in movies %}
-    <li class="table-view-cell media">
-        <a class="navigate-right">
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
-            <div class="media-body">
-                {{movie.Titulo}}
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
-            </div>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+<div class="tabs tabs-icon-top">
+  <a class="tab-item active">
+    <i class="icon ion-home"></i>
+    Home
+  </a>
+  <a class="tab-item">
+    <i class="icon ion-star"></i>
+    Favorites
+  </a>
+  <a class="tab-item">
+    <i class="icon ion-gear-a"></i>
+    Settings
+  </a>
 </div>
 
-<footer>
-    <nav class="bar bar-tab">
-        <a class="tab-item active" href="#">
-            <span class="icon icon-home"></span>
-            <span class="tab-label">Filmes</span>
-        </a>
-        <a class="tab-item" href="#">
-            <span class="icon icon-info"></span>
-            <span class="tab-label">Preços</span>
-        </a>
-        <a class="tab-item" href="#">
-            <span class="icon icon-gear"></span>
-            <span class="tab-label">Config</span>
-        </a>
-    </nav>
-</footer> -->
 
-
-<script src="/js/ionic.bundle.min.js"></script>
-<script>
-
-
-    console.log(mapDay[n]);
-</script>
+<script src="http://code.ionicframework.com/0.9.26/js/ionic.bundle.min.js"></script>
+<script src="/modules.js"></script>
+<script src="/controller.js"></script>
 </body>
 </html>
