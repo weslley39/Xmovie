@@ -13,12 +13,12 @@
   <link rel="stylesheet" href="/css/ionic.min.css">
 </head>
 <body>
-<div ng-controller="MoviesController">
+<div ng-controller="MoviesController as ctrl">
     <ion-content>
     <div class="list">
-      <a ng-repeat="movie in movies" href="" class="item item-thumbnail-left" >
+      <a ng-repeat="movie in moviesList" href="" class="item item-thumbnail-left" >
         <img ng-src="{{movie.Img}}">
-        <h2>{{movie | json}}</h2>
+        <h2>{{moviesList | json}}</h2>
         <p>{{movie.Horarios.hour}}</p>
       </a>
     </div>
@@ -27,7 +27,7 @@
   <div class="tabs tabs-icon-top">
     <a class="tab-item active">
       <i class="icon ion-home" ng-click="loadData()"></i>
-      Home{{teste}}
+      Home{{ctrl.teste}}
     </a>
     <a class="tab-item">
       <i class="icon ion-star"></i>

@@ -1,13 +1,13 @@
 (function() {
 	'use strict';
-	angular.module('myApp').controller('MoviesController', ['$scope', '$http', 'MainService', MoviesController]);
+	angular.module('myApp').controller('MoviesController', ['$scope', 'MainService', MoviesController]);
 
-	function MoviesController ($scope, $http, MainService) {
-		$scope.teste = "oi";
+	function MoviesController ($scope, MainService) {
+		this.teste = "oi";
 		function init () {
 			var promise = MainService.loadAllMovies();
 			promise.then(function (movies) {
-				$scope.movies = movies;
+				$scope.moviesList = movies;
 				console.log(movies);
 			});
 		}
