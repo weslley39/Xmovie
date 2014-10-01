@@ -13,40 +13,36 @@
   <link rel="stylesheet" href="/css/ionic.min.css">
 </head>
 <body>
+<div ng-controller="MoviesController">
+    <ion-content>
+    <div class="list">
+      <a ng-repeat="movie in movies" href="" class="item item-thumbnail-left" >
+        <img ng-src="{{movie.Img}}">
+        <h2>{{movie | json}}</h2>
+        <p>{{movie.Horarios.hour}}</p>
+      </a>
+    </div>
+  </ion-content>
 
-
-<ion-content>
-<div class="list">
-  {% for movie in movies %}
-  <a href="#"
-  class="item item-thumbnail-left">
-
-  <img src="{{movie.Img}}">
-  <h2>{{movie.Titulo}}</h2>
-  <p>{{movie.Horarios.hour}}</p>
-</a>
-{% endfor %}
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item active">
+      <i class="icon ion-home" ng-click="loadData()"></i>
+      Home{{teste}}
+    </a>
+    <a class="tab-item">
+      <i class="icon ion-star"></i>
+      Favorites
+    </a>
+    <a class="tab-item">
+      <i class="icon ion-gear-a"></i>
+      Settings
+    </a>
+  </div>
 </div>
-</ion-content>
-
-<div class="tabs tabs-icon-top">
-  <a class="tab-item active">
-    <i class="icon ion-home"></i>
-    Home
-  </a>
-  <a class="tab-item">
-    <i class="icon ion-star"></i>
-    Favorites
-  </a>
-  <a class="tab-item">
-    <i class="icon ion-gear-a"></i>
-    Settings
-  </a>
-</div>
-
 
 <script src="/js/ionic.bundle.min.js"></script>
 <script src="/modules.js"></script>
+<script src="/services.js"></script>
 <script src="/controller.js"></script>
 </body>
 </html>
