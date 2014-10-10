@@ -3,12 +3,18 @@
 	angular.module('myApp').controller('MoviesController', ['$scope', 'MainService', MoviesController]);
 
 	function MoviesController ($scope, MainService) {
-		this.teste = "oi";
+		var self = this;
+
+		this.hello = function (argument) {
+			alert('ooi');
+		}
+
+		self.hi = "oi";
 		function init () {
 			var promise = MainService.loadAllMovies();
 			promise.then(function (movies) {
-				$scope.moviesList = movies;
 				console.log(movies);
+				self.moviesList = movies;
 			});
 		}
 		init();
