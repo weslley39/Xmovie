@@ -7,7 +7,6 @@
 		function init () {
 			var promise = MainService.loadAllMovies();
 			promise.then(function (movies) {
-				console.log(movies);
 				$scope.moviesList = movies;
 			});
 		}
