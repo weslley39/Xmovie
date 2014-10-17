@@ -1,7 +1,7 @@
 <ion-view title="'Home'">
-<ion-content has-tabs="true" >
+<ion-content has-tabs="true">
 <div class="list">
-  <a ng-repeat="movie in moviesList" href="" class="item item-thumbnail-left" >
+  <a ng-repeat="movie in moviesList" href="#/movieDetail" class="item item-thumbnail-left" ng-click="showMovieDetail($index)">
     <img ng-src="{{movie.Img}}">
     <h2>{{movie.Titulo}}</h2>
     <p>{{movie.Horarios || "Sessão Encerrada"}}</p>
