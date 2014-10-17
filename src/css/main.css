@@ -1,3 +1,7 @@
-.text-center{
-	text-align: center;
+.img-movie-detail{
+	border-radius: 20px;
+	width: 60%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
