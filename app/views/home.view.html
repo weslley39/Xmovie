@@ -1,19 +1,10 @@
-<style>
-	.img-circle{
-		background-position: center center;
-		background-size: 90%;
-		border-radius: 50%;
-		border: 2px solid rgba(0, 0, 0, 0.58);
-		padding: 0px 0px 80px 80px;
-	}
-</style>
 <ion-view title="'Home'">
 <ion-content has-tabs="true">
 <div class="list">
 	<a ng-repeat="movie in moviesList" href="#/movieDetail" class="item item-thumbnail-left" ng-click="showMovieDetail($index)">
 		<img class="img-circle" style="background-image: url({{movie.Img}})">
 		<h2>{{movie.Titulo}}</h2>
-		<p>{{movie.Horarios || "Sessão Encerrada"}}</p>
+		<p><span class="label label-primary" ng-repeat="horario in movie.Horarios" ng-class="{'label-success': $index === 0, 'space-hour-movie': $index > 0}">{{horario}}</span></p>
 	</a>
 </div>
 </ion-content>
