@@ -1,8 +1,68 @@
-  <ion-view title="Home">
-    <ion-content has-tabs="true" >
-        <h3 class="text-center">{{movieDetail.Titulo}}</h1>
-        <img ng-src="{{movieDetail.Img}}" class="img-movie-detail">
-        <br><br>
-        <pre>{{movieDetail.Descricao}}</pre>
-    </ion-content>
-  </ion-view>
+<ion-view title="Home">
+<ion-content has-tabs="true" >
+<h3 class="text-center">{{movieDetail.Titulo}}</h1>
+<img ng-src="{{movieDetail.Img}}" class="img-movie-detail">
+<br><br>
+<pre>{{movieDetail.Descricao}}</pre>
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td class="col-xs-4"><b>Data Inicial</b></td>
+			<td><span style="float: right">{{movieDetail.DataInicial}}</span></td>
+		</tr>
+		<tr>
+			<td><b>Data Final</b></td>
+			<td><span style="float: right">{{movieDetail.DataFinal}}</span></td>
+		</tr>
+		<tr>
+			<td><b>Gênero</b></td>
+			<td><span style="float: right">{{movieDetail.Genero | limitTo: 24}}&nbsp;...</span></td>
+		</tr>
+		<tr>
+			<td><b>Elenco</b></td>
+			<td><span style="float: right">{{movieDetail.Elenco | limitTo: 24}}&nbsp;...</span></td>
+		</tr>
+		<tr>
+			<td><b>Diretor</b></td>
+			<td><span style="float: right">{{movieDetail.Diretor | limitTo: 24}}&nbsp;...</span></td>
+		</tr>
+		<tr>
+			<td><b>Horarios</b></td>
+			<td><span style="float: right">{{movieDetail.Horarios || "Sessão Encerrada"}}</span></td>
+		</tr>
+	</tbody>
+</table>
+<!-- <div class="list">
+			<a class="item item-icon-right" href="">
+Data Inicial
+<span class="item-note">
+{{movieDetail.DataInicial}}
+</span>
+			</a>
+			<a class="item item-icon-right" href="">
+Data Final
+<span class="item-note">
+{{movieDetail.DataFinal}}
+</span>
+			</a>
+			<a class="item item-icon-right" href="">
+Gênero
+<span class="item-note">
+{{movieDetail.Genero}}
+</span>
+			</a>
+			<a class="item item-icon-right" href="">
+Elenco
+<span class="item-note">
+{{movieDetail.Elenco}}
+</span>
+			</a>
+			<a class="item item-icon-right" href="">
+Diretor
+<span class="item-note">
+{{movieDetail.Diretor}}
+</span>
+			</a>
+</div> -->
+</ion-content>
+</ion-view>
