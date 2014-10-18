@@ -1,54 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html ng-app="myApp">
+  <head>
     <title>Xmovie</title>
-
-    <!-- Sets initial viewport load and disables zooming  -->
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-
-    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-    <link rel="stylesheet" href="/css/ratchet.min.css">
-    <link rel="stylesheet" href="/css/ratchet-theme-ios.min.css">
-</head>
-<body>
-
-<div class="content">
-<ul class="table-view">
-    {% for movie in movies %}
-    <li class="table-view-cell media">
-        <a class="navigate-right">
-            <img class="media-object pull-left" src="http://placehold.it/42x42">
-            <div class="media-body">
-                {{movie.Titulo}}
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet.</p>
-            </div>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-</div>
-
-<footer>
-    <nav class="bar bar-tab">
-        <a class="tab-item active" href="#">
-            <span class="icon icon-home"></span>
-            <span class="tab-label">Filmes</span>
-        </a>
-        <a class="tab-item" href="#">
-            <span class="icon icon-info"></span>
-            <span class="tab-label">Preços</span>
-        </a>
-        <a class="tab-item" href="#">
-            <span class="icon icon-gear"></span>
-            <span class="tab-label">Config</span>
-        </a>
-    </nav>
-</footer>
+    <link rel="stylesheet" href="/css/ionic.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
 
 
-<script src="/js/ratchet.min.js"></script>
-</body>
+  <ion-tabs class="tabs-icon-top">
+    <ion-tab title="Filmes" icon="ion-home" href="#/tab/home">
+      <ion-nav-view></ion-nav-view>
+      <!-- <ion-nav-view name="movie-detail"></ion-nav-view> -->
+    </ion-tab>
+
+    <ion-tab title="Preços" icon="ion-star" href="">
+      <ion-nav-view></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Config" icon="ion-gear-a" href="#/tab/home">
+      <ion-nav-view></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+    
+    <script src="/js/ionic.bundle.min.js"></script>
+    <script src="/modules.js"></script>
+    <script src="/routes.js"></script>
+    <script src="/services.js"></script>
+    <script src="/controller.js"></script>
+  </body>
 </html>
