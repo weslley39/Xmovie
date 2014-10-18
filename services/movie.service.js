@@ -20,9 +20,11 @@ module.exports = {
 					}
 				});
 				movies[index]['Horarios'] = '';
-				movies[index]['Horarios']['hour']= availableHours.length === 0 ?
-				"Sessão Encerrada" :
-				availableHours;
+				if (availableHours.length === 0 ) {
+					movies[index]['Horarios'] = "Sessão Encerrada"
+				} else {
+					movies[index]['Horarios'] = availableHours;
+				}
 			});
 			cb(movies);
 		});

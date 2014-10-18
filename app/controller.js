@@ -9,13 +9,13 @@
 			var promise = MainService.loadAllMovies();
 			promise.then(function (movies) {
 				$scope.moviesList = movies;
+				console.log(movies);
 			});
 		}
 
 
 		$scope.showMovieDetail = function (movieIndex) {
 			$rootScope.movieDetail = $scope.moviesList[movieIndex];
-			// console.log(JSON.stringify($rootScope.movieDetail));
 		}
 		init();
 	}
