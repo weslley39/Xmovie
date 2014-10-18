@@ -1,0 +1,46 @@
+<ion-view title="{{movieDetail.Titulo | limitTo: 30}}">
+
+<ion-nav-bar class="nav-title-slide-ios7 bar-dark">
+<!--   <ion-nav-back-button class="button-icon ion-chevron-left">
+  </ion-nav-back-button> -->
+<!--   <ion-nav-back-button class="button-clear">
+    <i class="ion-arrow-left-c"></i> Voltar
+  </ion-nav-back-button> -->
+  <a href="#/"><button class="button button-icon icon ion-arrow-left-c"></button></a>
+</ion-nav-bar>
+
+<ion-content has-tabs="true" >
+<br><br>
+<img ng-src="{{movieDetail.Img}}" class="img-movie-detail">
+<br><br>
+<pre>{{movieDetail.Descricao}}</pre>
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td class="col-xs-4"><b>Data Inicial</b></td>
+			<td><span style="float: right">{{movieDetail.DataInicial}}</span></td>
+		</tr>
+		<tr>
+			<td><b>Data Final</b></td>
+			<td><span style="float: right">{{movieDetail.DataFinal}}</span></td>
+		</tr>
+		<tr>
+			<td><b>Gênero</b></td>
+			<td><span style="float: right">{{movieDetail.Genero | limitTo: 24}}&nbsp;...</span></td>
+		</tr>
+		<tr>
+			<td><b>Elenco</b></td>
+			<td><span style="float: right">{{movieDetail.Elenco | limitTo: 24}}&nbsp;...</span></td>
+		</tr>
+		<tr>
+			<td><b>Diretor</b></td>
+			<td><span style="float: right">{{movieDetail.Diretor | limitTo: 24}}&nbsp;...</span></td>
+		</tr>
+		<tr>
+			<td><b>Horarios</b></td>
+			<td><span style="float: right">{{movieDetail.Horarios || "Sessão Encerrada"}}</span></td>
+		</tr>
+	</tbody>
+</table>
+</ion-content>
+</ion-view>

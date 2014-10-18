@@ -12,8 +12,7 @@ var mongoConnection = port === 3000 ?
 
 
 var pub = __dirname + '/src',
-    appDir = __dirname + '/app',
-    view = __dirname + '/views';
+    appDir = __dirname + '/app';
 
 
 mongoose.connect(mongoConnection, function(err){

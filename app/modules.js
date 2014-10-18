@@ -1,1 +1,4 @@
-angular.module('myApp', ['ionic']);
+(function(){
+	'use strict';
+	angular.module('myApp', ['ionic'])
+})();

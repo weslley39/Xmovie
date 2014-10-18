@@ -14,7 +14,7 @@ module.exports = {
 
 
                     $('.slides_container div a').each(function(index, elem){
-                        movieList.push({Titulo: $(this).find('img').attr('title'), Url: $(this).attr('href')});
+                        movieList.push({Titulo: $(this).find('img').attr('title'), Url: $(this).attr('href'), ImgThumb: $(this).find('img').attr('src')});
                     });
 
 
@@ -27,7 +27,8 @@ module.exports = {
                                 newMoview.Titulo = movie.Titulo;
                                 newMoview.Url = movie.Url;
                                 newMoview.Descricao = $('.c13').text();
-                                newMoview.Img = 'http://www.shoppingpatioguarulhos.com.br/' + $('.img').find('img').attr('src')
+                                newMoview.Img = 'http://www.shoppingpatioguarulhos.com.br/' + movie.ImgThumb;
+                                // newMoview.Img = 'http://www.shoppingpatioguarulhos.com.br/' + $('.img').find('img').attr('src')
                                 newMoview.DataInicial = $('.verde13').eq(0).find('fo').text().substring(0, 10);
                                 newMoview.DataFinal = $('.verde13').eq(1).find('fo').text().substring(0, 10);
                                 newMoview.Genero = $('.verde13').eq(2).find('fo').text().substring(0, $('.verde13').eq(2).find('fo').text().indexOf("          "));
