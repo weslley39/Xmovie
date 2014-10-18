@@ -21,7 +21,7 @@ module.exports = {
 				});
 				movies[index]['Horarios'] = '';
 				if (availableHours.length === 0 ) {
-					movies[index]['Horarios'] = "Sessão Encerrada"
+					movies[index]['Horarios'] = ["Sessão Encerrada"];
 				} else {
 					movies[index]['Horarios'] = availableHours;
 				}
