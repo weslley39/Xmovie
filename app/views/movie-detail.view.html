@@ -1,6 +1,16 @@
-<ion-view title="Home">
+<ion-view title="{{movieDetail.Titulo | limitTo: 30}}">
+
+<ion-nav-bar class="nav-title-slide-ios7 bar-dark">
+<!--   <ion-nav-back-button class="button-icon ion-chevron-left">
+  </ion-nav-back-button> -->
+<!--   <ion-nav-back-button class="button-clear">
+    <i class="ion-arrow-left-c"></i> Voltar
+  </ion-nav-back-button> -->
+  <a href="#/"><button class="button button-icon icon ion-arrow-left-c"></button></a>
+</ion-nav-bar>
+
 <ion-content has-tabs="true" >
-<h3 class="text-center">{{movieDetail.Titulo}}</h1>
+<br><br>
 <img ng-src="{{movieDetail.Img}}" class="img-movie-detail">
 <br><br>
 <pre>{{movieDetail.Descricao}}</pre>
@@ -32,37 +42,5 @@
 		</tr>
 	</tbody>
 </table>
-<!-- <div class="list">
-			<a class="item item-icon-right" href="">
-Data Inicial
-<span class="item-note">
-{{movieDetail.DataInicial}}
-</span>
-			</a>
-			<a class="item item-icon-right" href="">
-Data Final
-<span class="item-note">
-{{movieDetail.DataFinal}}
-</span>
-			</a>
-			<a class="item item-icon-right" href="">
-Gênero
-<span class="item-note">
-{{movieDetail.Genero}}
-</span>
-			</a>
-			<a class="item item-icon-right" href="">
-Elenco
-<span class="item-note">
-{{movieDetail.Elenco}}
-</span>
-			</a>
-			<a class="item item-icon-right" href="">
-Diretor
-<span class="item-note">
-{{movieDetail.Diretor}}
-</span>
-			</a>
-</div> -->
 </ion-content>
 </ion-view>
