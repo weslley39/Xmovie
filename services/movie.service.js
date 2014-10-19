@@ -3,7 +3,7 @@ var Movie = require('../schemas/movie');
 module.exports = {
 	getMovies: function (cb) {
 		Movie.find(function (err, movies) {
-			var mapDay = {1: 'Segunda', 2: 'Terca', 3: 'Quarta', 4: 'Quinta', 5: 'Sexta', 6: 'Sabado', 7: 'Domingo'};
+			var mapDay = {1: 'Segunda', 2: 'Terca', 3: 'Quarta', 4: 'Quinta', 5: 'Sexta', 6: 'Sabado', 0: 'Domingo'};
 
 			var d = new Date();
 			var day = d.getDay();
