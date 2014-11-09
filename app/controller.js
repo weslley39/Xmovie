@@ -16,9 +16,9 @@
 
 		$scope.showMovieDetail = function (movieIndex) {
 			$rootScope.movieDetail = $scope.moviesList[movieIndex];
-			var local = JSON.parse(localStorage.getItem('movies'));
-			console.log(local);
-		}
+			// var local = JSON.parse(localStorage.getItem('movies'));
+		};
+
 		init();
 	}
 })();
