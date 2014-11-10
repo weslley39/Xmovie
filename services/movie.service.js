@@ -2,9 +2,8 @@
 	'use strict';
 	var crawler = require('../components/crawler');
 	var Movie = require('../schemas/movie');
-	var LastUpdate = require('../schemas/lastUpdate');
 	var movieService = require('../services/movie.service.js');
-
+	var updateService = require('../services/update.service.js');
 
 	module.exports = {
 		getMovies: getMovies
@@ -42,37 +41,19 @@
 	}
 
 	function updateMovies (cb) {
-		LastUpdate.findOne(function (err, data) {
-			if(err) throw err;
-			var date = new Date();
-			var daysPassed;
-
-			if (data) {
-				daysPassed = Math.abs(date.getTime() - new Date(data.LastDate).getTime());
-				daysPassed = Math.floor(daysPassed / (1000 * 3600 * 24)); 
-			} else {
-				daysPassed = 8;
-			}
-			if(daysPassed >= 7){
-				var today = {
-					'LastDate': date,
-					'DayOfWeek': date.getDay()
-				};
-				LastUpdate.create(today, function (err, data) {
-					Movie.remove({}, function(err) { 
-						if (err) throw err;
-						crawler.updateListMovies(function(movies) {
-							Movie.create(movies, function (err, movies) {
-								if (err) throw err;
-								cb();
-							});
+		updateService.needUpdate(function(need) {
+			if(!need) return cb();
+			if (need) {
+				Movie.remove({}, function(err) { 
+					if (err) throw err;
+					crawler.updateListMovies(function(movies) {
+						Movie.create(movies, function (err, movies) {
+							if (err) throw err;
+							cb();
 						});
 					});
 				});
-			} else {
-				cb();
 			}
-
 		});
 	}
 })();

@@ -1,6 +1,8 @@
 (function() {
     'use strict';
     var movieService = require('../services/movie.service.js');
+    var PriceService = require('../services/price.service.js');
+    var Movie = require('../schemas/movie');
 
     module.exports = exports = function(app, db){
         app.get('/loadData', function(req, res){
@@ -9,6 +11,16 @@
                 res.send(movies);
             };
             movieService.getMovies(cb);
+        });
+
+        app.get('/getPrices', function(req, res, next) {
+            var cb = function(prices) {
+                res.contentType('json');
+                res.send(prices);
+            };
+            PriceService.updatePrices(function() {
+                PriceService.getPrices(cb);
+            });
         });
 
         app.get('/', function(req, res, next){
