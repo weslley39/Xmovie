@@ -18,9 +18,7 @@
                 res.contentType('json');
                 res.send(prices);
             };
-            PriceService.updatePrices(function() {
-                PriceService.getPrices(cb);
-            });
+            PriceService.getPrices(cb);
         });
 
         app.get('/', function(req, res, next){

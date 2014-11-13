@@ -68,8 +68,8 @@ getPrices: function (cb) {
             request(firstMovieUrl, function(error, response, html){
                 if(!error) {
                     var $ = cheerio.load(html);
-                    var horarios = [];
-                    if  (horarios.length === 0){
+                    var horarios = {};
+                    if  (horarios){
                         horarios.Segunda = [
                         $('.box.box_assista').find('.preco_valor').eq(0).text(),
                         $('.box.box_assista').find('.preco_valor').eq(1).text(),
@@ -121,4 +121,4 @@ getPrices: function (cb) {
 
 
 }
-};
+};
