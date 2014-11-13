@@ -14,9 +14,15 @@
    .state('movieDetail', {
     url: "/movieDetail",
     templateUrl: "/views/movie-detail.view.html",
-     controller: 'MoviesController'
+    controller: 'MoviesController'
   })
 
-$urlRouterProvider.otherwise("/");
-}
+   .state('prices', {
+    url: "/prices",
+    templateUrl: "/views/prices.view.html",
+    controller: 'MoviesController'
+  })
+
+   $urlRouterProvider.otherwise("/");
+ }
 })();

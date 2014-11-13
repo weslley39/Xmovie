@@ -1,11 +1,16 @@
 <ion-view title="'Home'">
 <ion-content has-tabs="true">
 <div class="list">
-  <a ng-repeat="movie in moviesList" href="#/movieDetail" class="item item-thumbnail-left" ng-click="showMovieDetail($index)">
-    <img ng-src="{{movie.Img}}">
-    <h2>{{movie.Titulo}}</h2>
-    <p>{{movie.Horarios || "Sessão Encerrada"}}</p>
-  </a>
+	<a ng-repeat="movie in moviesList" href="#/movieDetail" class="item item-thumbnail-left" ng-click="showMovieDetail($index)">
+		<img class="img-circle" style="background-image: url({{movie.Img}})">
+		<h2>{{movie.Titulo}}</h2>
+		<p><span 	class="label label-primary" 
+					ng-repeat="horario in movie.Horarios" 
+					ng-class="{'label-success': $index === 0, 'space-hour-movie': $index > 0, 'label-danger': horario == 'Sessão Encerrada'}">
+				{{horario}}
+			</span>
+		</p>
+	</a>
 </div>
 </ion-content>
 </ion-view>
