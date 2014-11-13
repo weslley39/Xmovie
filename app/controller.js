@@ -21,7 +21,6 @@
 		function loadPrices (argument) {
 			var promise = MainService.loadPrices();
 			promise.then(function(price) {
-				console.log(price);
 				$scope.price = price;
 			});
 
