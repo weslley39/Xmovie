@@ -36,7 +36,7 @@
 			<td>
 				<span 	class="label label-primary" 
 						ng-repeat="horario in movieDetail.Horarios" 
-						ng-class="{'label-success': $index === 0, 'space-hour-movie': $index > 0, 'label-danger': horario == 'Sessão Encerrada'}"
+						ng-class="{'label-success': $index === 0, 'space-hour-movie': $index >= 0, 'label-danger': horario == 'Sessão Encerrada'}"
 						style="float: right">
 					{{horario}}
 				</span>
