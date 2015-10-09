@@ -8,7 +8,7 @@
     "cheerio": "*",
     "consolidate": "~0.9.1",
     "express": "3.5.1",
-    "mongoose": "*",
+    "mongoose": "^4.1.9",
     "request": "2.34.0",
     "swig": "1.4.1"
   }
